@@ -16,9 +16,35 @@ function getHumanChoice(){
 
     let choice = prompt("Choose Rock Paper or Scissors");
 
-    return choice;
+    return choice.charAt(0).toUpperCase() + choice.slice(1).toLowerCase();
 }
 
-console.log(getComputerChoice());
+let humanScore = 0;
+let computerScore = 0;
 
-console.log(getHumanChoice());
+function playRound(humanChoice, computerChoice){
+
+    if(
+        humanChoice === "Rock" && computerChoice === "Scissors" ||
+        humanChoice === "Paper" && computerChoice === "Rock" ||
+        humanChoice === "Scissors" && computerChoice === "Paper"
+    ){
+        console.log(`You win ${humanChoice} beats ${computerChoice}`);
+        humanScore++;
+    }
+    else if(humanChoice === computerChoice){
+        console.log("It's a tie");
+    }
+
+    else{
+        console.log(`You loose ${computerChoice} beats ${humanChoice}`);
+        computerScore++;
+    }
+
+}
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
+
