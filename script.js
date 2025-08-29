@@ -43,11 +43,14 @@ function playRound(humanChoice, computerChoice){
 
     if(humanScore == 5){
         div.textContent = "Player wins the game"
+        div.textContent += ` | Score: You ${humanScore} - ${computerScore} Computer`;
         disableButtons();
     }
 
     else if(computerScore == 5){
         div.textContent = "Player loses the game"
+        div.textContent += ` | Score: You ${humanScore} - ${computerScore} Computer`;
+
         disableButtons();
 
     }
@@ -56,33 +59,31 @@ function playRound(humanChoice, computerChoice){
 
 
 
-    const buttonPaper = document.createElement("button");
-    const buttonSci = document.createElement("button");
-    const buttonRock = document.createElement("button");
+   const buttonRock = document.createElement("button");
+   const buttonScissors = document.createElement("button");
+   const buttonPaper = document.createElement("button");
 
-    buttonRock.textContent = "Rock";
-    buttonSci.textContent = "Sci";
-    buttonPaper.textContent = "Paper";
+buttonRock.textContent = "Rock";
+buttonPaper.textContent = "Paper";
+buttonScissors.textContent = "Scissors";
 
-    document.body.appendChild(buttonSci);
-    document.body.appendChild(buttonPaper);
     document.body.appendChild(buttonRock);
+    document.body.appendChild(buttonScissors);
+    document.body.appendChild(buttonPaper);
 
     buttonRock.addEventListener("click", ()=>
         playRound("Rock", getComputerChoice()));
 
+    buttonScissors.addEventListener("click", ()=>
+    playRound("Scissors", getComputerChoice()));
+
     buttonPaper.addEventListener("click", ()=>
     playRound("Paper", getComputerChoice()));
 
-    buttonSci.addEventListener("click", ()=>
-    playRound("Scissors", getComputerChoice()));
 
 
-function disableButtons(){
-    buttonRock.disabled = true;
-    buttonPaper.disabled = true;
-    buttonSci.disabled = true;
-}
-
-
-
+    function disableButtons() {
+        buttonRock.disabled = true;
+        buttonScissors.disabled = true;
+        buttonPaper.disabled = true;
+    }
